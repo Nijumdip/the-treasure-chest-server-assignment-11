@@ -33,11 +33,21 @@ async function run() {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const cursor = await inventoryCollection.findOne(query);
-      console.log(cursor);
-      res.send(cursor);
-      
+      // console.log(cursor);
+      res.send(cursor); 
     })
     //   get method end
+
+
+    // post method start
+    app.post('/addItem', async (req, res) => {
+      const item = req.body;
+      const result = await inventoryCollection.insertOne(item);
+      res.send(result);
+      // console.log(result);
+      
+    })
+    // post method end
     
   } finally {
     // await client.close();
