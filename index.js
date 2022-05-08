@@ -45,9 +45,18 @@ async function run() {
       const result = await inventoryCollection.insertOne(item);
       res.send(result);
       // console.log(result);
-      
     })
     // post method end
+
+    // delete method start
+    app.delete('/delete/:id', async (req, res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const query = { _id: ObjectId(id) };
+      const result = await inventoryCollection.deleteOne(query);
+      res.send(result);
+    })
+    // delete method end
     
   } finally {
     // await client.close();
