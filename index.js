@@ -21,6 +21,10 @@ async function run() {
     const inventoryCollection = client
       .db("the-treasure-chest")
       .collection("inventory");
+    
+    const servicesCollection = client
+      .db("the-treasure-chest")
+      .collection("services");
 
     //   get method start
     app.get("/inventory", async (req, res) => {
@@ -29,6 +33,14 @@ async function run() {
       const inventories = await cursor.toArray();
       console.log(inventories);
       res.send(inventories);
+    });
+
+    app.get("/services", async (req, res) => {
+      const query = {};
+      const cursor = servicesCollection.find(query);
+      const services = await cursor.toArray();
+      console.log(services);
+      res.send(services);
     });
 
     app.get("/inventory/:id", async (req, res) => {
