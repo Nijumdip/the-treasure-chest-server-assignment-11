@@ -81,7 +81,7 @@ async function run() {
       res.send(result);
     });
 
-/* 
+
     app.put("/inventory/:id", async (req, res) => {
       const id = req.params.id;
       const data = req.body;
@@ -90,20 +90,15 @@ async function run() {
       const query = { _id: ObjectId(id) };
       const updateItem = {
         $set: {
-          img: data.img,
-          name: data.name,
-          description: data.description,
-          price: data.price,
-          supplier: data.supplier,
-          quantity: data.quantity,
+          quantity: data.quantity
         }
       };
       const result = await inventoryCollection.updateOne(query, updateItem, options);
       console.log(result);
       res.send(result);
-    }); */
+    });
 
-    
+
     // put method end
   } finally {
     // await client.close();
